@@ -47,14 +47,14 @@ class simpcommunicate{
 	 *ids array(1,2,3[,...]),modelid or ids array(1=>mid1,2=>mid2,3=>  
 	 *mid3[,...])
 	 *@return $array2post 
-		jxsid=>([...,]
-			secretkey => secretkey
-			salt => salt
-			fromwho => fromwho
-			data =>array('jxsid(fromwho)'=>'','catid'=>'catid','limit'=>'')
-			url =>url
-			action =>'catid|count|simpdata|postcons'
-		)
+	 *	jxsid=>([...,]
+	 *		secretkey => secretkey
+	 *		salt => salt
+	 *		fromwho => fromwho
+	 *		data =>array('jxsid(fromwho)'=>'','catid'=>'catid','limit'=>'')
+	 *		url =>url
+	 *		action =>'catid|count|simpdata|postcons'
+	 *	)
 	 */
 	public function precurl(){
 		$requests = $this->requestvars;
@@ -73,17 +73,17 @@ class simpcommunicate{
 	 *post ids array(1,2,3[,...]),modelid or ids array(1=>mid1,2=>mid2,3=>  
 	 *mid3[,...])
 	 *@return array  $array2post
-		jxsid=>(
-			modelid=>array(
-				'master'=>array(
-					id=>array('id'=>num,'catid'=>num[,...])[,...]
-				),
-				'slave'=>array(
-					id=>array('id'=>num,'content'=>content[,...])[,...]'
-				)
-			)[,
-			...],publicdata
-		)
+	 *	jxsid=>(
+	 *		modelid=>array(
+	 *			'master'=>array(
+	 *				id=>array('id'=>num,'catid'=>num[,...])[,...]
+	 *			),
+	 *			'slave'=>array(
+	 *				id=>array('id'=>num,'content'=>content[,...])[,...]'
+	 *			)
+	 *		)[,
+	 *		...],publicdata
+	 *	)
 	 */
 	public function precurl_conts($requests){
 		//$requests = $this->requestvars;
