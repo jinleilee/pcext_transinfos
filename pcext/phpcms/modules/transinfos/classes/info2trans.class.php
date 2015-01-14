@@ -125,11 +125,11 @@ class info2trans extends transdb{
 	/**
 	 *远程获取数据总入口
 	 *@$getdata array('action'=>'catid|count|simpdata|postcons',
-				//secretkey => secretkey
-				//salt => salt
-				//fromwho => fromwho
-				//data =>array('catid'=>'catid','limit'=>'','jxsid'=>'')
-	 		)
+	 *			//secretkey => secretkey
+	 *			//salt => salt
+	 *			//fromwho => fromwho
+	 *			//data =>array('catid'=>'catid','limit'=>'','jxsid'=>'')
+	 *		)
 	 *@return $rs 返回状态 
 	 */
 	 
