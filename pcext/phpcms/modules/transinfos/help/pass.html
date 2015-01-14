@@ -1,0 +1,85 @@
+
+1、推送信息
+情景：选择文章ID推送
+初步数据：
+a)ids array(1,2,3[,...]) modelid//文章ID数组和模型ID 
+  jxsids array 接受方ID
+b)ids array(1=>mid1,2=>mid2,3=>mid3[,...])//文章ID=>模型ID
+  jxsids array 接受方ID
+处理后数据
+jxsid=>(
+    modelid=>array(
+        'master'=>array(
+            id=>array('id'=>num,'catid'=>num[,...])[,...]
+        ),
+        'slave'=>array(
+            id=>array('id'=>num,'content'=>content[,...])[,...]'
+        )
+    )[,
+    ...],publicdata
+)
+publicdata array
+jxsid/*接受方ID*/=>(
+    secretkey => secretkey, salt => salt, //验证相关(经销商密钥和随机salt)
+    fromwho => fromwho,//数据来源
+    data =>array(
+    	'jxsid'=>'',//接受方ID,如果接收方为官网ID为9999
+    )//部分可选信息
+    url =>url //推送url
+    action =>'catid|count|simpdata|postcons' //接收方action
+)
+接收数据
+modelid须相等或者对应
+todo
+
+action方法
+process_one
+A:index -> action -> precurl
+B:index -> action -> info2change
+2、采集信息
+获取可采集catid列表
+须提交数据
+jxsid/*接受方ID*/=>(
+    secretkey => secretkey, salt => salt, //验证相关(经销商密钥和随机salt)
+    fromwho => fromwho,//数据来源
+    data =>array(
+    	'jxsid'=>'',//接受方ID,如果接收方为官网ID为9999
+    )//部分可选信息
+    url =>url //推送url
+    action =>'catid|count|simpdata|postcons' //接收方action
+)
+其他情景附加数据：
+获取经销商catids --
+获取catid下文章总数 + data=>array('catid'=>'xx')
+获取catid下部分文章列表 + data=>array('catid'=>'xx','limit'=>'xx')
+获取完整文章 + data=>array('catid'=>'xx','ids'=>array('id1','id2')) 启用推送
+
+action方法
+process_two
+A:index -> action -> precurl
+B:index -> action -> dataformate -> precurl(with postdata of A) -> info2trans
+-----------------------
+allneedprecurl
+--------------------------------------------------------------------------------
+array(
+jxsid/*接受方ID*/=>(
+    secretkey => secretkey, salt => salt, //验证相关(经销商密钥和随机salt)
+    fromwho => fromwho,//数据来源
+    data =>array(
+    	'jxsid'=>'',//接受方ID,如果接收方为官网ID为9999
+    	'catid'=>'catid',//请求信息的catid
+    	'limit'=>''//请求信息条数起点
+    )//部分可选信息
+    url =>url //推送url
+    action =>'catid|count|simpdata|postcons' //接收方action
+)
+)
+
+
+注释:官网ID为9999
+需要处理：导入相应模型，模型ID对应，导入对应catid；
+category表添加是否可推送字段；
+添加相应cache文件；
+
+完成后
+新闻推送后更新url缓存，重新统计栏目数目，更新栏目缓存。

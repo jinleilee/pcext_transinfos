@@ -1,0 +1,15 @@
+经销商网站
+管理栏目添加是否可采集；
+内容列表添加推送和同步
+设置权限，总站推送不可以修改
+对应同步栏目
+移动模块代码，后台添加菜单
+phpcms/modules/content/templates/content_list.tpl.php
+关于审核：
+先工作流设置审核，再设置
+经销商不能修改官网推送文章：(只修改经销商)
+phpcms/modules/content/templates/content_list.tpl.php
+phpcms/modules/content/centent.php
+
+加密设置：
+密码规则，所有请求（经销商to官网[密码从cache读取] ， 官网to经销商[密码从数据库读取]）均使用经销商密码和salt

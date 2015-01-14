@@ -1,0 +1,2 @@
+新建类文件extbase,myexception,filemanage
+修改文件mysql.class.php model.class.php
