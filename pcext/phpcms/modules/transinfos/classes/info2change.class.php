@@ -9,22 +9,22 @@ class info2change extends transdb{
 	/**
 	 *插入数据
 	 *@param array  $array2post
-		jxsid=>(
-			modelid=>array(
-				'master'=>array(
-					id=>array('id'=>num,'catid'=>num[,...])[,...]
-				),
-				'slave'=>array(
-					id=>array('id'=>num,'content'=>content[,...])[,...]'
-				)
-			)[,
-			...]
-			//secretkey => secretkey
-			//salt => salt
-			//fromwho => fromwho
-			//action => action
-			//data => array('update'=>1[,...])
-		)
+		*jxsid=>(
+		*	modelid=>array(
+		*		'master'=>array(
+		*			id=>array('id'=>num,'catid'=>num[,...])[,...]
+		*		),
+		*		'slave'=>array(
+		*			id=>array('id'=>num,'content'=>content[,...])[,...]'
+		*		)
+		*	)[,
+		*	...]
+		*	//secretkey => secretkey
+		*	//salt => salt
+		*	//fromwho => fromwho
+		*	//action => action
+		*	//data => array('update'=>1[,...])
+		*)
 	 */
 	public function dealpostcon($recieves){
 		$this->checksecretkey($recieves['secretkey'],$recieves['salt'],$recieves['data']['jxsid']);
